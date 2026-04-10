@@ -357,13 +357,27 @@ function launchGame(url) {
     const iframe = document.getElementById('game-frame');
     iframe.src = url;
     container.style.display = 'flex';
+    showPanicNotice();
 }
 
-function closeGame() {
+function closeGame(event) {
+    if (event) event.stopPropagation();
     const container = document.getElementById('game-frame-container');
     const iframe = document.getElementById('game-frame');
     iframe.src = '';
     container.style.display = 'none';
+    closePanicNotice();
+}
+
+function showPanicNotice() {
+    const notice = document.getElementById('panic-notice');
+    if (notice) notice.style.display = 'flex';
+}
+
+function closePanicNotice(event) {
+    if (event) event.stopPropagation();
+    const notice = document.getElementById('panic-notice');
+    if (notice) notice.style.display = 'none';
 }
 
 function openPlayer(id, title) {
@@ -380,6 +394,10 @@ function cloakTab() {
     link.href = 'https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png';
     document.getElementsByTagName('head')[0].appendChild(link);
     toggleSettings();
+}
+
+function panicRedirect() {
+    window.location.replace("https://launchpad.classlink.com/olentangy");
 }
 
 // Panic Button
@@ -410,14 +428,28 @@ document.addEventListener('keydown', (e) => {
             return;
         }
 
-        // Trigger on single quote key
-        if (event.key === "'") {
-            // Optional: replace instead of adding to history
-            window.location.replace("https://launchpad.classlink.com/olentangy");
+        // Trigger on single quote key or physical Quote key
+        if (event.key === "'" || event.code === "Quote") {
+            panicRedirect();
         }
     }
 
-    // Attach to both window and document for reliability
-    window.addEventListener("keydown", handleKey);
-    document.addEventListener("keydown", handleKey);
+    const keyTargets = [window, document];
+    if (document.body) keyTargets.push(document.body);
+
+    keyTargets.forEach((target) => {
+        target.addEventListener("keydown", handleKey, true);
+        target.addEventListener("keypress", handleKey, true);
+    });
+
+    const iframe = document.getElementById('game-frame');
+    if (iframe) {
+        iframe.addEventListener('load', () => {
+            try {
+                iframe.contentWindow.addEventListener('keydown', handleKey);
+            } catch (e) {
+                // cross-origin content cannot be accessed
+            }
+        });
+    }
 })();

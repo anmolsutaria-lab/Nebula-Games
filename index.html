@@ -209,8 +209,7 @@
             <div class="setting-row">
                 <div class="setting-desc">
                     <h4>Panic Mode</h4>
-                    <p>Press ` to redirect to Google.
-                 (Will not work if you're typing) </p>
+                    <p>Press ` to redirect to Google. Press ' to redirect to ClassLink.</p>
                 </div>
                 <label class="switch">
                     <input type="checkbox" id="panic-toggle" checked>
@@ -229,9 +228,14 @@
 </div>
 
 <div id="game-frame-container">
-    <div class="frame-controls">
-        <span style="color:white; font-weight:bold; font-size: 18px;">Nebula</span>
-        <span class="close-game" onclick="closeGame()"><i class="fa-solid fa-xmark"></i> Close Game</span>
+    <div class="frame-controls" onclick="panicRedirect(event)">
+        <span class="frame-title">Nebula</span>
+        <span class="panic-label">Panic Bar</span>
+        <span class="close-game" onclick="closeGame(event)"><i class="fa-solid fa-xmark"></i> Close Game</span>
+    </div>
+    <div id="panic-notice" class="panic-notice">
+        <span class="notice-close" onclick="closePanicNotice(event)">×</span>
+        <p>Clicking ' will fail to change tabs when you're in a game. To switch to OLSD portal, click anywhere on the panic bar.</p>
     </div>
     <iframe id="game-frame" src=""></iframe>
 </div>
