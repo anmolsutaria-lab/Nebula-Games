@@ -178,7 +178,6 @@ window.onload = function() {
     renderAllGames(gamesData, 'all-games-grid');
     initHomeAnimation();
     updateTime();
-    startFakeUsers();
     renderTrending();
 };
 
@@ -330,17 +329,6 @@ function updateTime() {
     hours = hours % 12 || 12;
     document.getElementById('time-display').innerText = `${hours}:${minutes} ${ampm}`;
     setTimeout(updateTime, 1000);
-}
-
-function startFakeUsers() {
-    const userCountEl = document.getElementById('user-count');
-    let currentUsers = 42;
-    setInterval(() => {
-        currentUsers += Math.floor(Math.random() * 5) - 2;
-        if (currentUsers < 15) currentUsers = 15;
-        if (currentUsers > 80) currentUsers = 80;
-        userCountEl.innerText = currentUsers;
-    }, 3000);
 }
 
 /* --- LAUNCHER --- */
