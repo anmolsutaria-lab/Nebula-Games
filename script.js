@@ -174,6 +174,26 @@ const gamesData = [
 /* --- STATE MANAGEMENT --- */
 let favorites = JSON.parse(localStorage.getItem('rg_favs')) || [];
 
+function hideSiteLoader() {
+    const loader = document.getElementById('site-loader');
+    const app = document.querySelector('.app-container');
+    if (app) app.classList.add('visible');
+    if (loader) {
+        loader.classList.add('site-loader-hidden');
+        setTimeout(() => { if (loader) loader.style.display = 'none'; }, 500);
+    }
+}
+
+function initSiteLoader() {
+    setTimeout(hideSiteLoader, 2000);
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSiteLoader);
+} else {
+    initSiteLoader();
+}
+
 window.onload = function() {
     renderAllGames(gamesData, 'all-games-grid');
     initHomeAnimation();

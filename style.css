@@ -20,7 +20,36 @@ body {
     height: 100vh;
 }
 
-.app-container { display: flex; height: 100%; width: 100%; }
+.app-container { display: flex; height: 100%; width: 100%; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
+.app-container.visible { opacity: 1; pointer-events: auto; }
+
+.site-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #050505;
+}
+
+.site-loader-content {
+    max-width: 420px;
+    padding: 30px 35px;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    background: rgba(15, 15, 15, 0.95);
+    border: 1px solid #292929;
+    border-radius: 18px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+}
+
+.site-loader-hidden {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
 
 /* SIDEBAR */
 .sidebar {
