@@ -175,10 +175,7 @@ body {
 .fav-btn.active { color: #FFD700; }
 
 /* EXTRAS */
-.movie-card { width: 200px; margin-right: 20px; margin-bottom: 20px; display: inline-block; vertical-align: top; cursor: pointer; transition: 0.3s; }
-.movie-card:hover { transform: scale(1.05); }
-.movie-poster { height: 300px; width: 100%; border-radius: 12px; background-size: cover; background-position: center; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
-.movie-title { margin-top: 10px; font-weight: bold; font-size: 15px; text-align: center; color: white; }
+
 
 .credits-box { background: #111; padding: 40px; border-radius: 20px; border: 1px solid #222; max-width: 600px; }
 .credits-box h3 { color: var(--accent); margin-bottom: 10px; }

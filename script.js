@@ -380,11 +380,7 @@ function closePanicNotice(event) {
     if (notice) notice.style.display = 'none';
 }
 
-function openPlayer(id, title) {
-    const playerCode = `<!DOCTYPE html><html><head><title>${title}</title><style>body{margin:0;background:#000;height:100vh;display:flex;justify-content:center;align-items:center;}iframe{width:100%;height:100%;border:none;}</style></head><body><iframe src="https://www.dailymotion.com/embed/video/${id}?autoplay=1" allow="autoplay; fullscreen" allowfullscreen></iframe></body></html>`;
-    const win = window.open('about:blank', '_blank');
-    if (win) { win.document.write(playerCode); win.document.close(); }
-}
+
 
 function cloakTab() {
     document.title = "My Drive - Google Drive";

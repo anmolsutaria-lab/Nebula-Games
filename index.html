@@ -50,10 +50,6 @@
             </div>
 
             
-            <div class="nav-item" onclick="switchView('view-apps', this)">
-                <i class="fa-brands fa-android"></i> Apps
-            </div>
-            
             <div class="nav-header">Info</div>
             <div class="nav-item" onclick="switchView('view-credits', this)">
                 <i class="fa-solid fa-circle-info"></i> Credits
@@ -122,73 +118,7 @@
              <div class="games-grid" id="trending-grid"></div>
         </div>
 
-        <div id="view-movies" class="view-section">
-            <div class="section-header"><h2>Movies</h2></div>
-            
-            <div class="movie-card" onclick="openPlayer('x8m56a4', 'Cloudy with a Chance of Meatballs')">
-                <div class="movie-poster" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/d/d1/Cloudy_with_a_chance_of_meatballs_poster.jpg');"></div>
-                <div class="movie-title">Cloudy with a Chance of Meatballs</div>
-            </div>
 
-            <div class="movie-card" onclick="openPlayer('x9ruy64', 'Escape from Planet Earth')">
-                <div class="movie-poster" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/a/a2/Escape_from_Planet_Earth_Poster.jpg');"></div>
-                <div class="movie-title">Escape from Planet Earth</div>
-            </div>
-
-            <div class="movie-card" onclick="openPlayer('x9nxtva', 'The Good Dinosaur')">
-                <div class="movie-poster" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/8/80/The_Good_Dinosaur_poster.jpg');"></div>
-                <div class="movie-title">The Good Dinosaur</div>
-            </div>
-
-            <div class="movie-card" onclick="openPlayer('x9lj6f2', 'Coco')">
-                <div class="movie-poster" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/9/98/Coco_%282017_film%29_poster.jpg');"></div>
-                <div class="movie-title">Coco</div>
-            </div>
-
-            <div class="movie-card" onclick="openPlayer('x9611g2', 'Free Birds')">
-                <div class="movie-poster" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/2/2c/Free_Birds_poster.jpg');"></div>
-                <div class="movie-title">Free Birds</div>
-            </div>
-
-            <div class="movie-card" onclick="openPlayer('x9tvqkm', 'Half Nelson')">
-                <div class="movie-poster" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/6/65/Half_Nelson_Poster.jpg');"></div>
-                <div class="movie-title">Half Nelson</div>
-            </div>
-
-            <div class="movie-card" onclick="openPlayer('x9yqkc4', 'Nowhere Special')">
-                <div class="movie-poster" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/8/82/Nowhere_Special_poster.jpg');"></div>
-                <div class="movie-title">Nowhere Special</div>
-            </div>
-
-            <div class="movie-card" onclick="openPlayer('x9tor96', 'Trolls World Tour')">
-                <div class="movie-poster" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/e/ed/Trolls_World_Tour_poster.jpg');"></div>
-                <div class="movie-title">Trolls World Tour</div>
-            </div>
-
-            <div class="movie-card" onclick="openPlayer('x9t8j82', 'Sleeping Beauty')">
-                <div class="movie-poster" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/0/00/Sleeping_Beauty_1959_poster.jpg');"></div>
-                <div class="movie-title">Sleeping Beauty</div>
-            </div>
-
-            <div class="movie-card" onclick="openPlayer('x9abe5s', 'Kung Fu Dog')">
-                <div class="movie-poster" style="background-image: url('https://m.media-amazon.com/images/M/MV5BYmUyZWY4MDItMjkyZC00M2IwLTkzMGYtZmQ5ZmI1ODAyZGIyXkEyXkFqcGdeQXVyMjQ4MzcxNDU@._V1_FMjpg_UX1000_.jpg');"></div>
-                <div class="movie-title">Kung Fu Dog</div>
-            </div>
-
-            <div class="movie-card" onclick="openPlayer('x9ie844', 'The Incredibles')">
-                <div class="movie-poster" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/e/ec/The_Incredibles.jpg');"></div>
-                <div class="movie-title">The Incredibles</div>
-            </div>
-
-            <div class="movie-card" onclick="openPlayer('x9h60de', 'Jumanji')">
-                <div class="movie-poster" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/b/b6/Jumanji_poster.jpg');"></div>
-                <div class="movie-title">Jumanji</div>
-            </div>
-        </div>
-        <div id="view-apps" class="view-section">
-            <div class="section-header"><h2>Apps</h2></div>
-            <p style="color:#666;">Apps coming soon.</p>
-        </div>
 
         <div id="view-credits" class="view-section">
             <div class="section-header"><h2>Credits</h2></div>
@@ -241,7 +171,7 @@
     <div id="panic-notice" class="panic-notice">
         <span class="notice-close" onclick="closePanicNotice(event)">×</span>
         <p>Clicking ' will fail to change tabs when you're in a game. To switch to OLSD portal, click anywhere on the panic bar.</p>
-    </div>
+    </div>  
     <iframe id="game-frame" src=""></iframe>
 </div>
 
