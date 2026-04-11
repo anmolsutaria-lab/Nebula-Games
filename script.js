@@ -1,48 +1,48 @@
 /* --- GAME DATABASE --- */
 const gamesData = [
     // --- ORIGINAL GAMES ---
-    { title: "Subway Surfers", cat: "Arcade", img: "https://amplify8.neocities.org/images/ab6761610000e5eb6a99f89f210e3efe234eee61.jpeg", url: "https://mysticgames.netlify.app/games/subway/" },
-    { title: "Strong Man Sim", cat: "Funny", img: "https://amplify8.neocities.org/images/Strongman_Simulator.webp", url: "https://script.google.com/macros/s/AKfycbxLkugSSEdQm0qJQ4PZWRce6p8pKpuPdLIFeivG0cMt-QmjEjedBCarzz_kd2tlvxzs/exec" },
-    { title: "Steal a Brainrot", cat: "Funny", img: "https://amplify8.neocities.org/images/mqdefault.jpg", url: "https://script.google.com/macros/s/AKfycbytsGAlf3lPg4Po7HvAheHvyJKxYRA4ZYPUGjjjMpZafajZs3F5pu7E5BekDXlNhRHUFw/exec" },
-    { title: "Grow a Garden", cat: "Funny", img: "https://amplify8.neocities.org/images/sadas.jpeg", url: "https://script.google.com/macros/s/AKfycbwK_YDMKEccZyVOz_fpe66G4Je4VyFPdT10OdaKpM699Utzbq41n2m6OXqAzpX0oqrLTA/exec" },
-    { title: "Snow Rider 3D", cat: "Arcade", img: "https://amplify8.neocities.org/images/2121454.jpeg", url: "https://script.google.com/macros/s/AKfycbw5Z-Ryg_JfIIDYH7pzzPKXlr2tN0HCw-tT_ZvxBGDPsDDY41ewPVneVeLzelfpnBab/exec" },
-    { title: "Crash Carts", cat: "Action", img: "https://amplify8.neocities.org/images/smash-karts_1x1-cover.png", url: "https://script.google.com/macros/s/AKfycbx63iRe5mtf5PQGIn_eGwKePxCA1iU6w-YApn57Mh4phi2ZB-G-GCJA1YTV9jKrwoqb/exec" },
-    { title: "Nugget Clicker", cat: "Clicker", img: "https://amplify8.neocities.org/images/Nugget-Clicker-game.webp", url: "https://script.google.com/macros/s/AKfycbzjgnGGeTNL2DTjJzVx3WGvsLjEyA47O6xYss-ijTLWWwrQv9siK9Gn_QqNDlDkrc27/exec" },
-    { title: "Cookie Clicker", cat: "Clicker", img: "https://amplify8.neocities.org/images/deswfsd.jpeg", url: "https://script.google.com/macros/s/AKfycbxGM35J29NkO-2LYjxWj_cA9IUaaXypkUy-LqXyLRbGTz0R6lXmAEapz1STN1jlTIRavw/exec" },
-    { title: "Pixel Shooter", cat: "Action", img: "https://amplify8.neocities.org/images/fdsedf.jpeg", url: "https://script.google.com/macros/s/AKfycbzBG3iwMy-Kdz3gY7oQSBugoIGwmA-IWITNrA8j1vX5ytZQHcKTS-61QLSpA5ixBJ2U/exec" },
-    { title: "Bitlife", cat: "Arcade", img: "https://amplify8.neocities.org/images/bitlife.jpeg", url: "https://script.google.com/macros/s/AKfycbz7YQScNBizgtxyn4DO7v12IQTI4nqwQc8srdlN30uZWw5BxWdIr2TPoMRC_8yQQKC7/exec" },
-    { title: "Space Bar Clicker", cat: "Clicker", img: "https://amplify8.neocities.org/images/space.jpeg", url: "https://script.google.com/macros/s/AKfycbzZN3jRO2eOgcp622_W0GYAeArMio71AmlfRhF8yFucC5hEbRnDFZ3NLiN8peebEdlhWw/exec" },
-    { title: "Poop Clicker", cat: "Clicker", img: "https://amplify8.neocities.org/images/poop.jpeg", url: "https://script.google.com/macros/s/AKfycbzDdetO4NX5twY1pU389ZUG2M9DERmoV0DeJNJS7SvzVIdA1WUaBeIeHo_CfQVNw2gq6g/exec" },
-    { title: "Spider Man", cat: "Action", img: "https://amplify8.neocities.org/images/popo.jpeg", url: "https://script.google.com/macros/s/AKfycbwAoMJxFkkCGbz6H0x2lq5uVhb1vvQRKraex1znydX5Gm0jWse3HWUTvdU34ghoPqQauQ/exec" },
-    { title: "Slope 2", cat: "Arcade", img: "https://amplify8.neocities.org/images/slope2fr.jpeg", url: "https://sites.google.com/view/slpe-2-player/" },
-    { title: "Slither IO", cat: "Arcade", img: "https://amplify8.neocities.org/images/slther.jpeg", url: "https://script.google.com/macros/s/AKfycbwXhPAppqZUy69d6b26B3Z6daQdZmzPsiaSsywQseSBMh94FLNnVTmupJqtonwt9oaQLw/exec" },
-    { title: "Paper IO", cat: "Arcade", img: "https://amplify8.neocities.org/images/PAPER.jpeg", url: "https://script.google.com/macros/s/AKfycbwNxCzUuQVmLRWTwYK2D4yTqpWg2O-qge8BwCkxhLmqWd1DtXynwJXPEDClPt7ERZr-/exec" },
-    { title: "Eaglercraft", cat: "Action", img: "https://amplify8.neocities.org/images/craft.jpg", url: "https://www.google.com/url?q=https%3A%2F%2Fmysticgames.netlify.app%2Fgames%2Feaglercraft%2Fdragonx_v4%2520%281%29" },
-    { title: "Noob Miner", cat: "Clicker", img: "https://amplify8.neocities.org/images/miner.jpeg", url: "https://script.google.com/macros/s/AKfycbxkvPO4mEcWEk5a9TgEuR7qyiYZs7hL80XF5pwK8QMKHqmA7qUqxvIePB3PF9c3Bqc93w/exec" },
-    { title: "Drift Boss", cat: "Arcade", img: "https://amplify8.neocities.org/images/drift.jpeg", url: "https://script.google.com/macros/s/AKfycbwAOi2tPbjzeWDkigfZMIPEGubYxz2la_qjxJyydNZyjwgbqsv9mv05g7tdmLHdvdaw/exec" },
-    { title: "Hole IO", cat: "Arcade", img: "https://amplify8.neocities.org/images/hole.jpeg", url: "https://script.google.com/macros/s/AKfycbwSQ0aXrXdz23Z0adlljZLtt6EGzD7max6U15OnUFBxhQmht6KK7l7RzsVo2wOdkoXR/exec" },
-    { title: "Death Run 3D", cat: "Arcade", img: "https://amplify8.neocities.org/images/run3d.jpeg", url: "https://script.google.com/macros/s/AKfycbwqW4kBl41CHKxAW1aOCzUllnCGaK6LDmkZfAZH_dJzu646nns5bRfn0oqa5Zpq9zEI/exec" },
-    { title: "FNAF", cat: "Arcade", img: "https://amplify8.neocities.org/images/FNaF1.webp", url: "https://script.google.com/macros/s/AKfycbxJNtrKTWPCSIo9tOqq53G2xqoQCIPDTYUsVOT79Eqk8I7C5cQkGdDnj0jzlNHa7bvs3g/exec" },
-    { title: "TABS", cat: "Clicker", img: "https://amplify8.neocities.org/images/TABS_MainCapsule1.webp", url: "https://script.google.com/macros/s/AKfycbx-20sK1Vv2W5l1l4NnyzA67dCLHiWUNOnwlGioOx9yKXkauoZt5H7l6il14wlLS9hI4A/exec" },
-    { title: "Basketball Stars", cat: "Arcade", img: "https://amplify8.neocities.org/images/fdfderswfdfgfdvdfgvdfs.png", url: "https://script.google.com/macros/s/AKfycbwzYMDDcdDUAvEP7iO6OdRk-5_oUp6vYvDdyEEz8tTOzWi5y4-Qf3vQ6TBoZuc9UYVcLg/exec" },
-    { title: "Retro Bowl", cat: "Arcade", img: "https://amplify8.neocities.org/images/wadwad.jpg", url: "https://bav1.wadmc.site.cdn.cloudflare.net/pages/other/interpreter/index.html?url=https://cdn.jsdelivr.net/gh/gn-math/html@main/33.html" },
-    { title: "Geometry Dash", cat: "Arcade", img: "https://amplify8.neocities.org/images/geometrydash-1639510868467.jpg", url: "https://mysticgames.netlify.app/games/geometrydash/" },
-    { title: "CS Strike", cat: "Arcade", img: "https://amplify8.neocities.org/images/Counter-Strike_Source_(box_art).jpg", url: "https://storage.googleapis.com/freezenova/all/2024/unity2/fps-strike/pre-gg.html" },
-    { title: "Eggy Car", cat: "Arcade", img: "https://amplify8.neocities.org/images%202/eggy-car-game.jpg", url: "https://script.google.com/macros/s/AKfycbxGFiHgVNVoous7yjguN7bcuwa6lejCHgh6V1weh1vNalyCzpMmaMH9NhTisNSqkUo3/exec" },
-    { title: "OvO", cat: "Arcade", img: "https://amplify8.neocities.org/images%202/OVONI.jpeg", url: "https://script.google.com/macros/s/AKfycbyDZOJq86UIFlMkKfvZtA_Sv86sKooVRpwVFS2rb38TOT8ExCt3PfR1Y5UAveVuVGlQLw/exec" },
-    { title: "Poly Track", cat: "Arcade", img: "https://amplify8.neocities.org/images%202/fe917ef48f1fb76ebbf7a135d2b55322.jpg", url: "https://script.google.com/macros/s/AKfycbzOmulSCFb0CwkaIrhIBdqglMVAfxQppFmVZmp2cp8-eHLj0j_LjbQtEhNyTClffFte/exec" },
+    { title: "Subway Surfers", cat: "Arcade", img: "https://cdn.akamai.steamstatic.com/steam/apps/1422050/header.jpg", url: "https://mysticgames.netlify.app/games/subway/" },
+    { title: "Strong Man Sim", cat: "Funny", img: "https://img.itch.zone/aW1hZ2UvOTEyNDg1NS85MDk5MTMxLnBuZw==/original/zfN%2BSn.webp", url: "https://script.google.com/macros/s/AKfycbxLkugSSEdQm0qJQ4PZWRce6p8pKpuPdLIFeivG0cMt-QmjEjedBCarzz_kd2tlvxzs/exec" },
+    { title: "Steal a Brainrot", cat: "Funny", img: "https://img.itch.zone/aW1hZ2UvMTcwMjc4NjMvODk3MjU2MC5wbmc=/original/C4XGwN.webp", url: "https://script.google.com/macros/s/AKfycbytsGAlf3lPg4Po7HvAheHvyJKxYRA4ZYPUGjjjMpZafajZs3F5pu7E5BekDXlNhRHUFw/exec" },
+    { title: "Grow a Garden", cat: "Funny", img: "https://img.itch.zone/aW1hZ2UvMTU4MTk5OC84OTkwODkucG5n/original/5YzfY5.webp", url: "https://script.google.com/macros/s/AKfycbwK_YDMKEccZyVOz_fpe66G4Je4VyFPdT10OdaKpM699Utzbq41n2m6OXqAzpX0oqrLTA/exec" },
+    { title: "Snow Rider 3D", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvMTQyNzAzNjcvMS5wbmc=/original/2Md%2FK6.webp", url: "https://script.google.com/macros/s/AKfycbw5Z-Ryg_JfIIDYH7pzzPKXlr2tN0HCw-tT_ZvxBGDPsDDY41ewPVneVeLzelfpnBab/exec" },
+    { title: "Crash Carts", cat: "Action", img: "https://img.itch.zone/aW1hZ2UvMTUwMzIwNzMvMzE0MzkwLnBuZw==/original/nMZdFe.webp", url: "https://script.google.com/macros/s/AKfycbx63iRe5mtf5PQGIn_eGwKePxCA1iU6w-YApn57Mh4phi2ZB-G-GCJA1YTV9jKrwoqb/exec" },
+    { title: "Nugget Clicker", cat: "Clicker", img: "https://img.itch.zone/aW1hZ2UvMjA4NDcwOS84MDk5NzAzLnBuZw==/original/%2B%2BOKDHs.webp", url: "https://script.google.com/macros/s/AKfycbzjgnGGeTNL2DTjJzVx3WGvsLjEyA47O6xYss-ijTLWWwrQv9siK9Gn_QqNDlDkrc27/exec" },
+    { title: "Cookie Clicker", cat: "Clicker", img: "https://img.itch.zone/aW1hZ2UvMjE2NzA5LzEwMzE2NjYucG5n/original/mZ0LDI.webp", url: "https://script.google.com/macros/s/AKfycbxGM35J29NkO-2LYjxWj_cA9IUaaXypkUy-LqXyLRbGTz0R6lXmAEapz1STN1jlTIRavw/exec" },
+    { title: "Pixel Shooter", cat: "Action", img: "https://img.itch.zone/aW1hZ2UvMTg4NDk4NS8xNDc5Mjc0NC5wbmc=/original/vjHR5F.webp", url: "https://script.google.com/macros/s/AKfycbzBG3iwMy-Kdz3gY7oQSBugoIGwmA-IWITNrA8j1vX5ytZQHcKTS-61QLSpA5ixBJ2U/exec" },
+    { title: "Bitlife", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvMTQwOTM1MC8xMDkwMzQ3LnBuZw==/original/j0SJJe.webp", url: "https://script.google.com/macros/s/AKfycbz7YQScNBizgtxyn4DO7v12IQTI4nqwQc8srdlN30uZWw5BxWdIr2TPoMRC_8yQQKC7/exec" },
+    { title: "Space Bar Clicker", cat: "Clicker", img: "https://img.itch.zone/aW1hZ2UvMTI2NzE0NzUvMzg5NTk3OS5wbmc=/original/L0gXvE.webp", url: "https://script.google.com/macros/s/AKfycbzZN3jRO2eOgcp622_W0GYAeArMio71AmlfRhF8yFucC5hEbRnDFZ3NLiN8peebEdlhWw/exec" },
+    { title: "Poop Clicker", cat: "Clicker", img: "https://img.itch.zone/aW1hZ2UvODAxNzQyLzEzMDAwODQucG5n/original/9rPMDl.webp", url: "https://script.google.com/macros/s/AKfycbzDdetO4NX5twY1pU389ZUG2M9DERmoV0DeJNJS7SvzVIdA1WUaBeIeHo_CfQVNw2gq6g/exec" },
+    { title: "Spider Man", cat: "Action", img: "https://img.itch.zone/aW1hZ2UvODI4Nzk1MS8xMDU0MjA0Ny5wbmc=/original/K7U0Jt.webp", url: "https://script.google.com/macros/s/AKfycbwAoMJxFkkCGbz6H0x2lq5uVhb1vvQRKraex1znydX5Gm0jWse3HWUTvdU34ghoPqQauQ/exec" },
+    { title: "Slope 2", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvMjI1NzM3OS83OTAyMjM3LnBuZw==/original/6aZKPz.webp", url: "https://sites.google.com/view/slpe-2-player/" },
+    { title: "Slither IO", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvMTE0MjA2My8xNzE5MjUwLnBuZw==/original/7DFo0P.webp", url: "https://script.google.com/macros/s/AKfycbwXhPAppqZUy69d6b26B3Z6daQdZmzPsiaSsywQseSBMh94FLNnVTmupJqtonwt9oaQLw/exec" },
+    { title: "Paper IO", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvOTg0MzY1OC8yNzY4NzYzLnBuZw==/original/RGWLSV.webp", url: "https://script.google.com/macros/s/AKfycbwNxCzUuQVmLRWTwYK2D4yTqpWg2O-qge8BwCkxhLmqWd1DtXynwJXPEDClPt7ERZr-/exec" },
+    { title: "Eaglercraft", cat: "Action", img: "https://img.itch.zone/aW1hZ2UvMTk5MjY2Mi8xMDE1ODA1MS5wbmc=/original/BmV1On.webp", url: "https://www.google.com/url?q=https%3A%2F%2Fmysticgames.netlify.app%2Fgames%2Feaglercraft%2Fdragonx_v4%2520%281%29" },
+    { title: "Noob Miner", cat: "Clicker", img: "https://img.itch.zone/aW1hZ2UvMjA0NjA4NC8xNjE2MzI5Ny5wbmc=/original/IQKfnS.webp", url: "https://script.google.com/macros/s/AKfycbxkvPO4mEcWEk5a9TgEuR7qyiYZs7hL80XF5pwK8QMKHqmA7qUqxvIePB3PF9c3Bqc93w/exec" },
+    { title: "Drift Boss", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvMjA4NzQ5MC84MDk5NzM0LnBuZw==/original/0Uz5cG.webp", url: "https://script.google.com/macros/s/AKfycbwAOi2tPbjzeWDkigfZMIPEGubYxz2la_qjxJyydNZyjwgbqsv9mv05g7tdmLHdvdaw/exec" },
+    { title: "Hole IO", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvMjI2Mzg1Ni84MDk3NjMwLnBuZw==/original/Z0LSWC.webp", url: "https://script.google.com/macros/s/AKfycbwSQ0aXrXdz23Z0adlljZLtt6EGzD7max6U15OnUFBxhQmht6KK7l7RzsVo2wOdkoXR/exec" },
+    { title: "Death Run 3D", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvMjI0Njc1Ni84MDk4MzI0LnBuZw==/original/wXQPXP.webp", url: "https://script.google.com/macros/s/AKfycbwqW4kBl41CHKxAW1aOCzUllnCGaK6LDmkZfAZH_dJzu646nns5bRfn0oqa5Zpq9zEI/exec" },
+    { title: "FNAF", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvNDIwNTI4LzcyMjQ4NzcucG5n/original/L47%2BVV.webp", url: "https://script.google.com/macros/s/AKfycbxJNtrKTWPCSIo9tOqq53G2xqoQCIPDTYUsVOT79Eqk8I7C5cQkGdDnj0jzlNHa7bvs3g/exec" },
+    { title: "TABS", cat: "Clicker", img: "https://img.itch.zone/aW1hZ2UvMTQwNzg3Ni81MDc2MjYzLnBuZw==/original/1EQlYJ.webp", url: "https://script.google.com/macros/s/AKfycbx-20sK1Vv2W5l1l4NnyzA67dCLHiWUNOnwlGioOx9yKXkauoZt5H7l6il14wlLS9hI4A/exec" },
+    { title: "Basketball Stars", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvMjA2MDQzNy84MDk2OTAyLnBuZw==/original/d%2BKSbX.webp", url: "https://script.google.com/macros/s/AKfycbwzYMDDcdDUAvEP7iO6OdRk-5_oUp6vYvDdyEEz8tTOzWi5y4-Qf3vQ6TBoZuc9UYVcLg/exec" },
+    { title: "Retro Bowl", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvODEzOTMxLzM3OTE4MDUucG5n/original/3CnKLa.webp", url: "https://bav1.wadmc.site.cdn.cloudflare.net/pages/other/interpreter/index.html?url=https://cdn.jsdelivr.net/gh/gn-math/html@main/33.html" },
+    { title: "Geometry Dash", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvMTk4ODg4MS85ODI4NjY1LnBuZw==/original/0fP7yz.webp", url: "https://mysticgames.netlify.app/games/geometrydash/" },
+    { title: "CS Strike", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvODk5MDM2LzQzMDcyODEucG5n/original/PH1dFA.webp", url: "https://storage.googleapis.com/freezenova/all/2024/unity2/fps-strike/pre-gg.html" },
+    { title: "Eggy Car", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvMjA1MDk0NS84MDk5MDQ4LnBuZw==/original/3LvU8M.webp", url: "https://script.google.com/macros/s/AKfycbxGFiHgVNVoous7yjguN7bcuwa6lejCHgh6V1weh1vNalyCzpMmaMH9NhTisNSqkUo3/exec" },
+    { title: "OvO", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvMTIxMDEyLzE1MTYwLnBuZw==/original/VZbJHn.webp", url: "https://script.google.com/macros/s/AKfycbyDZOJq86UIFlMkKfvZtA_Sv86sKooVRpwVFS2rb38TOT8ExCt3PfR1Y5UAveVuVGlQLw/exec" },
+    { title: "Poly Track", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvMjE5NjM2Ni84MDk4NjUyLnBuZw==/original/v9V6qs.webp", url: "https://script.google.com/macros/s/AKfycbzOmulSCFb0CwkaIrhIBdqglMVAfxQppFmVZmp2cp8-eHLj0j_LjbQtEhNyTClffFte/exec" },
 
     // --- NEW GAMES ADDED ---
-    { title: "Riddle School", cat: "Arcade", img: "https://amplify8.neocities.org/images%202/riddleschool.png", url: "https://script.google.com/macros/s/AKfycbyBMzbST-uTVoOBVyLwbqs7LeloEnSkKiP4Cik0DmPAcVR7Oqq-BzXdvrOzNR6Uwl4MJQ/exec" },
-    { title: "Riddle School 2", cat: "Arcade", img: "https://amplify8.neocities.org/images%202/riddle-school-2-4402.webp", url: "https://script.google.com/macros/s/AKfycbxAxmSYav_FxW2KK6Uq4gGNAkqUdVghvBbB7RGGp94sgFIyB0zaNQwMmtyXUrA7Uh80yQ/exec" },
-    { title: "Riddle School 3", cat: "Arcade", img: "https://amplify8.neocities.org/images%202/ridffdsa.jpeg", url: "https://script.google.com/macros/s/AKfycbwa5pPN4jqxL2C_SbGRkUUm23NwS3SB0XmUkqFNp0mEjCMy_lphUCFHXzb5ZsOUf9drNQ/exec" },
-    { title: "Riddle School 4", cat: "Arcade", img: "https://amplify8.neocities.org/images%202/riddle-school-4-4640.webp", url: "https://script.google.com/macros/s/AKfycbwGuLeqEsgE3zoFtlvDy6eJ9dwvTz7tJIubeYTMXqUKG-cNMrlgRteuJM1QxCDj_6gN/exec" },
-    { title: "Super Mario 64", cat: "Arcade", img: "https://amplify8.neocities.org/images%202/mario-64---button-1559263987447.webp", url: "https://script.google.com/macros/s/AKfycbyB8Cg09IyL5iA01VRMcp6GXWBsHJDyytzuovDyiHdgIUmtHuNM7x27VlBnJjYt26F-/exec" },
-    { title: "Governor of Poker", cat: "Arcade", img: "https://amplify8.neocities.org/images%202/govnig.jpeg", url: "https://script.google.com/macros/s/AKfycbypfdD_P9HVmO5Ms9mJZX7xl4IQBSsFYdUqZoJhR9f97McSR9B1wqvUc4YhoORgScn5/exec" },
-    { title: "Car King 2", cat: "Arcade", img: "https://amplify8.neocities.org/images%202/carking22.jpeg", url: "https://script.google.com/macros/s/AKfycbxQuqMuGYqOJSyYwUL5vYn1E3xCTjM7DAQZnhnKyYVmhH_2mNQS7INnwJkwr7l7T9GC/exec" },
-    { title: "Doom", cat: "Action", img: "https://amplify8.neocities.org/images%202/82a7cd303997644e10450fad1be3a3666f5cb0cfbc1fa44b38b429e607e64426_product_card_v2_mobile_slider_639.jpg", url: "https://script.google.com/macros/s/AKfycbyxLM58t1oGIyqp09GNTAGBqUBaFg7A9nY5lLwS45Zg2z63ax0EmnhHCXW_aHhEpdFcqg/exec" },
-    { title: "Doom 2", cat: "Action", img: "https://amplify8.neocities.org/images%202/doom222.jpg", url: "https://script.google.com/macros/s/AKfycbx61mSm2aEx_wwEQB66hIGUZm8hV2dBZvo2QXcabpXvc0r25c22pW-pdE8tmxBjOWcWCw/exec" },
-    { title: "Vex", cat: "Arcade", img: "https://amplify8.neocities.org/images%202/vex.jpeg", url: "https://script.google.com/macros/s/AKfycbxwyDsC49pauwYS59k4k10ptEAWo-6qgJf2nyvPt3i52bikDw98aFuDgvSPRWaIsnr8/exec" },
+    { title: "Riddle School", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvOTgyNDk3LzE1NDAwLnBuZw==/original/IBuQdO.webp", url: "https://script.google.com/macros/s/AKfycbyBMzbST-uTVoOBVyLwbqs7LeloEnSkKiP4Cik0DmPAcVR7Oqq-BzXdvrOzNR6Uwl4MJQ/exec" },
+    { title: "Riddle School 2", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvOTgyNDk4LzE1NDAxLnBuZw==/original/Kcv4NV.webp", url: "https://script.google.com/macros/s/AKfycbxAxmSYav_FxW2KK6Uq4gGNAkqUdVghvBbB7RGGp94sgFIyB0zaNQwMmtyXUrA7Uh80yQ/exec" },
+    { title: "Riddle School 3", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvOTgyNDk5LzE1NDAyLnBuZw==/original/30SDBo.webp", url: "https://script.google.com/macros/s/AKfycbwa5pPN4jqxL2C_SbGRkUUm23NwS3SB0XmUkqFNp0mEjCMy_lphUCFHXzb5ZsOUf9drNQ/exec" },
+    { title: "Riddle School 4", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvOTgyNTAwLzE1NDAzLnBuZw==/original/F4o1H3.webp", url: "https://script.google.com/macros/s/AKfycbwGuLeqEsgE3zoFtlvDy6eJ9dwvTz7tJIubeYTMXqUKG-cNMrlgRteuJM1QxCDj_6gN/exec" },
+    { title: "Super Mario 64", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvMzM0MzMxL1N1cGVyX01hcmlvXzY0X2xvZ28ucG5n/original/s%2BUvUX.webp", url: "https://script.google.com/macros/s/AKfycbyB8Cg09IyL5iA01VRMcp6GXWBsHJDyytzuovDyiHdgIUmtHuNM7x27VlBnJjYt26F-/exec" },
+    { title: "Governor of Poker", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvOTA2MzcvMTA3MjEucG5n/original/DjwXlT.webp", url: "https://script.google.com/macros/s/AKfycbypfdD_P9HVmO5Ms9mJZX7xl4IQBSsFYdUqZoJhR9f97McSR9B1wqvUc4YhoORgScn5/exec" },
+    { title: "Car King 2", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvMTc0MzI1MS8yMDU3NzY1LnBuZw==/original/sFNh5b.webp", url: "https://script.google.com/macros/s/AKfycbxQuqMuGYqOJSyYwUL5vYn1E3xCTjM7DAQZnhnKyYVmhH_2mNQS7INnwJkwr7l7T9GC/exec" },
+    { title: "Doom", cat: "Action", img: "https://img.itch.zone/aW1hZ2UvMjQ1Njg1OC8xMzg1NzA3My5wbmc=/original/NLvgHz.webp", url: "https://script.google.com/macros/s/AKfycbyxLM58t1oGIyqp09GNTAGBqUBaFg7A9nY5lLwS45Zg2z63ax0EmnhHCXW_aHhEpdFcqg/exec" },
+    { title: "Doom 2", cat: "Action", img: "https://img.itch.zone/aW1hZ2UvMjQ1Njg1Ny8xMzg1NzA3Mi5wbmc=/original/wkXiI2.webp", url: "https://script.google.com/macros/s/AKfycbx61mSm2aEx_wwEQB66hIGUZm8hV2dBZvo2QXcabpXvc0r25c22pW-pdE8tmxBjOWcWCw/exec" },
+    { title: "Vex", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvMTMyNzgzMi80MDkyMDU3LnBuZw==/original/1H6D48.webp", url: "https://script.google.com/macros/s/AKfycbxwyDsC49pauwYS59k4k10ptEAWo-6qgJf2nyvPt3i52bikDw98aFuDgvSPRWaIsnr8/exec" },
     { title: "Ant War", cat: "Arcade", img: "https://amplify8.neocities.org/images%202/antwar.webp", url: "https://script.google.com/macros/s/AKfycbwTCDauLkMPclvbdLzVCcJlUN0ZJJhW1WWX16471JKSvDvemRPf1d_koYpXxbgo5xtv/exec" },
     { title: "BTDB 5", cat: "Arcade", img: "https://amplify8.neocities.org/images%202/bt5.jpg", url: "https://script.google.com/macros/s/AKfycbzSjvvBl4oIbQbsdQ6wORkEPqBumZKhlNUW3FirGHuAIe6EPZ_QGuF4N0TqjL0ECFoo/exec" },
     { title: "Brawl Stars", cat: "Action", img: "https://amplify8.neocities.org/images%202/cropped.webp", url: "https://script.google.com/macros/s/AKfycby2-8wV6Z0j1rs8FEOpgLh45K2Psh7qsbQX9PFQqvuVhkiIxgbYZCQbnYTQvb6KyiGG/exec" },
@@ -211,11 +211,10 @@ function renderAllGames(list, containerId) {
         const starClass = isFav ? "fa-solid fa-star active" : "fa-regular fa-star";
         
         return `
-        <div class="game-card">
-            <img src="${game.img}" class="game-thumb" loading="lazy" onclick="launchGame('${game.url}')">
+        <div class="game-card" onclick="launchGame('${game.url}')">
             <div class="game-info">
-                <i class="${starClass} fav-btn" onclick="toggleFavorite('${game.title}', this)"></i>
-                <div class="game-title" onclick="launchGame('${game.url}')">${game.title}</div>
+                <i class="${starClass} fav-btn" onclick="event.stopPropagation(); toggleFavorite('${game.title}', this)"></i>
+                <div class="game-title">${game.title}</div>
                 <div class="game-cat">${game.cat}</div>
             </div>
         </div>
@@ -234,7 +233,7 @@ function initHomeAnimation() {
     const set2 = shuffled.slice(half);
 
     const createCardHTML = (game) => `
-        <div class="anim-card" style="background-image: url('${game.img}');" onclick="launchGame('${game.url}')"></div>
+        <div class="anim-card" onclick="launchGame('${game.url}')" data-title="${game.title}"></div>
     `;
 
     // Tripled content for smooth infinite scroll
