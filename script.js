@@ -537,6 +537,78 @@ const gamesData = [
     { title: "ASKL", cat: "Arcade", img: "https://amplify8.neocities.org/images%209/203911_1.jpg", url: "https://script.google.com/macros/s/AKfycbww4F_9BaFQM7puTDJFjFByg3l0ri2M8qYbGUSoQLO97vX9W3k0x7Wt27-DIENARPqdDg/exec" }
 ];
 
+/** Sidebar order; any category present in data but not listed sorts after these. */
+const GAME_CATEGORY_NAV_ORDER = [
+    'Action', 'Arcade', 'Racing', 'Platformer', 'IO and Multiplayer',
+    'Tower Defense', 'Horror', 'Puzzle', 'Strategy', 'Simulation',
+    'Sports', 'Clicker', 'Funny'
+];
+
+/**
+ * Spreads games out of overloaded Arcade/Action using title + URL hints.
+ * Runs once at load; first matching rule wins.
+ */
+function applyCategoryRules() {
+    const rules = [
+        { cat: 'Tower Defense', test: (t, u) => /tower defense|bloons|\btd\b|defend the tank|slime rush|mindustry|canyon defense|rush td/i.test(t) || /tower|bloons|defend-the-tank|slime-rush/i.test(u) },
+        { cat: 'Horror', test: (t, u) => /fnaf|freddy|five nights|backroom|baldis|rainbow friend|hungry lamu|99 nights|fnaw|burger and frights/i.test(t) || /fnaf|backroom|baldis|rainbow|freddy/i.test(u) },
+        { cat: 'IO and Multiplayer', test: (t, u) => /\.io\b|\bio\b|slither|paper\.?io|hole\.?io|shell shock|zombs|krunker|bonkio|1v1|smash karts|yohoho|getaway shootout|among us|kirkaio|rocketgoal/i.test(t) || /\.io|slither|paper\.io|hole\.io|shell-shock|zombs|krunker|bonkio|1v1|smash-karts|yohoho|among/i.test(u) },
+        { cat: 'Racing', test: (t, u) => /slope|drift|moto|madalin|tunnel rush|snow rider|hexgl|poly track|eggy car|drive mad|monster track|subway|kart|truck|wheels|stunt car|pipe rider|speed stars|drag racer|car vs|hill climb|scrapmetal|adventure driver|grand shift auto|blob man runner|tanuki sunset/i.test(t) || /slope|drift|moto|madalin|tunnel-rush|snow-rider|hexgl|polytrack|eggy-car|drive-mad|monster-track|subway|kart|stunt|pipe-rider|speed-stars|drag-racer|hill-climb/i.test(u) },
+        { cat: 'Platformer', test: (t, u) => /\bvex\b|run 3|run 2|\brun\b|geometry dash|geodash|ovo|crossy|fireboy|ducklife|happy wheels|getting over it|only up|super mario|sonic|spelunky|doodle jump|stickman hook|tomb of the mask|world'?s hardest|bad ice|cut the rope|jelly|parkour|obby|learn to fly|fancy pants|rabbit samurai|deepest sword|stack bump|zigzag|dune\b|flappy|jetpack|cluster rush|crossyroad|vex\d/i.test(t) || /vex|run-3|run-2|geometry|geodash|\bovo\b|crossy|fireboy|ducklife|happy-wheels|getting-over|only-up|mario|sonic|spelunky|doodle|stickman-hook|tomb-of|hardest|bad-ice|cut-the-rope|learn-to-fly|fancy-pants|rabbit-samurai|deepest-sword|stack-bump|zigzag|flappy|jetpack|obby|cluster-rush/i.test(u) },
+        { cat: 'Sports', test: (t, u) => /\b(basket|soccer|football|golf|volley|bowl|hockey|pool|miniputt|retro bowl|sports?|madden|nba|wrestle|baseball|skiing|surfing|boxing|punch|tennis|volleyball|hop masters|air hockey|battle soccer|ice hockey|1 on 1|edge surf)\b/i.test(t) || /basket|soccer|football|golf|volley|bowl|hockey|pool|miniputt|retro-bowl|wrestle|baseball|edge-surf|punch-out|air-hockey|battle-soccer|ice-hockey/i.test(u) },
+        { cat: 'Puzzle', test: (t, u) => /2048|puzzle|riddle\s*school|minesweeper|tetris|wordle|solitaire|bloxors|sudoku|connect\s*3|draw the hill|waterworks|fairsquares|sushi unroll|impossible quiz|this is the only level|factoryballs|align\s*4|checkers|there is no game|greybox|route digger|happy glass|spill it|bottle flip|google feud/i.test(t) || /2048|riddle|minesweeper|tetris|wordle|solitaire|bloxors|connect3|draw-the-hill|waterworks|fairsquares|impossiblequiz|factoryballs|align-4|checkers|there-is-no-game|route-digger|happy-glass|spill-it|bottle-flip|google-feud/i.test(u) },
+        { cat: 'Simulation', test: (t, u) => /bitlife|planetlife|sort the court|tabs\b|totally accurate|papas|papa'|theme hotel|gacha|cooking fever|hardware tycoon|space company|flight sim|tycoon|\bfarm\b|\bhotel\b|dogeminer|you are bezos|sandboxels|trimps|adarkroom|townscaper|grow a garden/i.test(t) || /bitlife|planetlife|sort-the-court|papas|papa-|theme-hotel|gacha|cooking-fever|hardware-tycoon|space-company|tycoon|dogeminer|you-are-bezos|sandboxels|trimps|adarkroom|townscaper|grow-a-garden/i.test(u) },
+        { cat: 'Strategy', test: (t, u) => /hex empire|craftmine|minecraft|plants vs|pandemic|infinite craft|glass city|\bhex\b(?!\s*gl)|evolution\b|superauto|final earth|tiny islands|ages of conflict|stick war|castel war|command and|grinde?craft/i.test(t) || /hexempire|craftmine|minecraft|plants-vs|pandemic|infinite-craft|glass-city|superautopets|final-earth|tiny-islands|ages-of-conflict|stickwar|castel-wars|grindcraft/i.test(u) },
+        { cat: 'Action', test: (t, u) => /shooter|strike|doom|ninja|gun|sniper|combat|battle(?!\s*soccer)|tank trouble|war strike|pixel.*shoot|alien|zombie|fps|fortnite|brawl|ragdoll archer|time shooter|kitchen gun|temple run|fruit ninja|krunk|overwatch|csgo|call of ops|legend of zelda|stick.*fight|duel|n gon|matrix|ninja vs|endless war|awesome tank|plants vs zombies|pvz|stickman street fighter/i.test(t) || /shooter|strike|doom|ninja|gun|sniper|combat|battle(?!-soccer)|tank-trouble|war-strike|pixel-shoot|alienhominid|zombie|time-shooter|kitchen-gun|temple-run|fruit-ninja|krunker|overwatch|call-of-ops|zelda|stick-duel|n-gon|matrix|ninjavsevil|endlesswar|awesometanks|plants-vs-zombies|stickman-street-fighter/i.test(u) },
+        { cat: 'Clicker', test: (t, u) => /clicker|idle|cookie|miner|space bar|merge round|particle|papery|nugget|poop|robux|spacebar|csgo clicker|frog clicker|idledice/i.test(t) || /clicker|idle|cookie|miner|space-bar|merge-round|particle|papery|nugget|poop|robux|spacebar|csgo-clicker|frog-clicker|idledice/i.test(u) },
+        { cat: 'Funny', test: (t, u) => /brainrot|strong man|soundboard|dumb ways|eel slap|elasticman|spinning rat|gimme the airpod|fake virus|bigredbutton|throwrocks|kitten cannon|creative kill|pigeon ascent/i.test(t) || /brainrot|strong-man|soundboard|dumbwaystodie|eel-slap|elasticman|spinningrat|gimme-the-airpod|fake-virus|bigredbutton|throwrocks|kittencannon|creativekillchamber|pigeon-ascent/i.test(u) }
+    ];
+
+    for (const g of gamesData) {
+        const t = (g.title || '').toLowerCase();
+        const u = (g.url || '').toLowerCase();
+        for (const { cat, test } of rules) {
+            if (test(t, u)) {
+                g.cat = cat;
+                break;
+            }
+        }
+    }
+}
+
+applyCategoryRules();
+
+function getSortedCategoriesFromData() {
+    const present = [...new Set(gamesData.map((g) => g.cat))];
+    const rank = (c) => {
+        const i = GAME_CATEGORY_NAV_ORDER.indexOf(c);
+        return i === -1 ? 100 + c.localeCompare('') : i;
+    };
+    return present.sort((a, b) => {
+        const da = rank(a);
+        const db = rank(b);
+        if (da !== db) return da - db;
+        return a.localeCompare(b);
+    });
+}
+
+function filterGamesFromEl(btn) {
+    const category = btn.getAttribute('data-category');
+    if (category) filterGames(category, btn);
+}
+
+function initCategoryDropdown() {
+    const dropdown = document.getElementById('cat-dropdown');
+    if (!dropdown) return;
+    const cats = getSortedCategoriesFromData();
+    dropdown.innerHTML = cats
+        .map((c) => {
+            const esc = c.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+            return `<div class="sub-item" data-category="${esc}" onclick="filterGamesFromEl(this)">${c}</div>`;
+        })
+        .join('');
+}
+
 /* --- STATE MANAGEMENT --- */
 
 function hideSiteLoader() {
@@ -554,14 +626,74 @@ function initSiteLoader() {
 }
 
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSiteLoader);
+    document.addEventListener('DOMContentLoaded', () => {
+        initCategoryDropdown();
+        initSiteLoader();
+    });
 } else {
+    initCategoryDropdown();
     initSiteLoader();
+}
+
+let dailyGamePick = null;
+let dailyGameRefreshTimer = null;
+
+/** Local calendar date YYYY-MM-DD (used so the pick changes at midnight in the user's timezone). */
+function dailyGameDateKey(date) {
+    const y = date.getFullYear();
+    const m = date.getMonth() + 1;
+    const d = date.getDate();
+    return `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+}
+
+/** Deterministic index from date so the same day always shows the same game until the next day. */
+function dailyGameIndexForDate(date) {
+    const key = dailyGameDateKey(date);
+    let h = 2166136261;
+    for (let i = 0; i < key.length; i++) {
+        h ^= key.charCodeAt(i);
+        h = Math.imul(h, 16777619);
+    }
+    return Math.abs(h >>> 0) % gamesData.length;
+}
+
+function pickDailyGameForDate(date) {
+    return gamesData[dailyGameIndexForDate(date)];
+}
+
+function renderDailyGame() {
+    if (!gamesData.length) return;
+    dailyGamePick = pickDailyGameForDate(new Date());
+    const titleEl = document.getElementById('daily-game-title');
+    const catEl = document.getElementById('daily-game-cat');
+    if (titleEl) titleEl.textContent = dailyGamePick.title;
+    if (catEl) catEl.textContent = dailyGamePick.cat;
+}
+
+function playDailyGame() {
+    if (dailyGamePick) launchGame(dailyGamePick.url);
+}
+
+function scheduleDailyGameMidnightRefresh() {
+    if (dailyGameRefreshTimer) clearTimeout(dailyGameRefreshTimer);
+    const now = new Date();
+    const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0, 0);
+    const ms = Math.max(1000, nextMidnight - now);
+    dailyGameRefreshTimer = setTimeout(() => {
+        renderDailyGame();
+        scheduleDailyGameMidnightRefresh();
+    }, ms);
+}
+
+function initDailyGame() {
+    renderDailyGame();
+    scheduleDailyGameMidnightRefresh();
 }
 
 window.onload = function() {
     renderAllGames(gamesData, 'all-games-grid');
     initHomeAnimation();
+    initDailyGame();
     updateTime();
 };
 
@@ -569,8 +701,14 @@ window.onload = function() {
 function renderAllGames(list, containerId) {
     const grid = document.getElementById(containerId);
     if(!grid) return;
-    
-    grid.innerHTML = list.map(game => `
+
+    const order = [...list];
+    for (let i = order.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [order[i], order[j]] = [order[j], order[i]];
+    }
+
+    grid.innerHTML = order.map(game => `
         <div class="game-card" onclick="launchGame('${game.url}')">
             <div class="game-info">
                 <div class="game-title">${game.title}</div>
@@ -649,10 +787,6 @@ function searchGames() {
 }
 
 /* --- UTILS --- */
-function toggleSettings() {
-    document.getElementById('settings-modal').classList.toggle('open');
-}
-
 function updateTime() {
     const now = new Date();
     let hours = now.getHours();
@@ -669,7 +803,6 @@ function launchGame(url) {
     const iframe = document.getElementById('game-frame');
     iframe.src = url;
     container.style.display = 'flex';
-    showPanicNotice();
 }
 
 function closeGame(event) {
@@ -678,86 +811,4 @@ function closeGame(event) {
     const iframe = document.getElementById('game-frame');
     iframe.src = '';
     container.style.display = 'none';
-    closePanicNotice();
 }
-
-function showPanicNotice() {
-    const notice = document.getElementById('panic-notice');
-    if (notice) notice.style.display = 'flex';
-}
-
-function closePanicNotice(event) {
-    if (event) event.stopPropagation();
-    const notice = document.getElementById('panic-notice');
-    if (notice) notice.style.display = 'none';
-}
-
-
-
-function cloakTab() {
-    document.title = "My Drive - Google Drive";
-    const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
-    link.type = 'image/x-icon';
-    link.rel = 'shortcut icon';
-    link.href = 'https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png';
-    document.getElementsByTagName('head')[0].appendChild(link);
-    toggleSettings();
-}
-
-function panicRedirect() {
-    window.location.replace("https://launchpad.classlink.com/olentangy");
-}
-
-// Panic Button
-document.addEventListener('keydown', (e) => {
-    if (e.key === '`' && document.getElementById('panic-toggle').checked) {
-        window.location.replace('https://google.com');
-    }
-});
-(function () {
-    // Force focus when possible
-    window.addEventListener("load", () => {
-        try { window.focus(); } catch (e) {}
-    });
-
-    // Panic key handler
-    function handleKey(event) {
-        const active = document.activeElement;
-
-        // Ignore if typing in input/textarea/contenteditable
-        if (
-            active &&
-            (
-                active.tagName === "INPUT" ||
-                active.tagName === "TEXTAREA" ||
-                active.isContentEditable
-            )
-        ) {
-            return;
-        }
-
-        // Trigger on single quote key or physical Quote key
-        if (event.key === "'" || event.code === "Quote") {
-            panicRedirect();
-        }
-    }
-
-    const keyTargets = [window, document];
-    if (document.body) keyTargets.push(document.body);
-
-    keyTargets.forEach((target) => {
-        target.addEventListener("keydown", handleKey, true);
-        target.addEventListener("keypress", handleKey, true);
-    });
-
-    const iframe = document.getElementById('game-frame');
-    if (iframe) {
-        iframe.addEventListener('load', () => {
-            try {
-                iframe.contentWindow.addEventListener('keydown', handleKey);
-            } catch (e) {
-                // cross-origin content cannot be accessed
-            }
-        });
-    }
-})();

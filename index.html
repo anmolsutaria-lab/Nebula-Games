@@ -34,12 +34,7 @@
                     <span><i class="fa-solid fa-list" style="margin-right:10px;"></i> Categories</span>
                     <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i>
                 </button>
-                <div class="dropdown-content" id="cat-dropdown">
-                    <div class="sub-item" onclick="filterGames('Action', this)">Action</div>
-                    <div class="sub-item" onclick="filterGames('Arcade', this)">Arcade</div>
-                    <div class="sub-item" onclick="filterGames('Clicker', this)">Clicker</div>
-                    <div class="sub-item" onclick="filterGames('Funny', this)">Funny</div>
-                </div>
+                <div class="dropdown-content" id="cat-dropdown"></div>
             </div>
 
             <div class="nav-item" onclick="switchView('view-credits', this)">
@@ -57,17 +52,26 @@
             </div>
             <div class="stats-bar">
                 <div class="stat-item" id="time-display">12:00 PM</div>
-                <button class="settings-btn" onclick="toggleSettings()">
-                    <i class="fa-solid fa-gear"></i>
-                </button>
             </div>
         </div>
 
         <div id="view-home" class="view-section active">
+            <div class="daily-game-strip" aria-label="Daily featured game">
+                <div class="daily-game-strip-inner">
+                    <span class="daily-game-label">Daily Game</span>
+                    <div class="daily-game-meta">
+                        <span id="daily-game-title" class="daily-game-title">…</span>
+                        <span id="daily-game-cat" class="daily-game-category">…</span>
+                    </div>
+                    <button type="button" class="daily-game-play" onclick="playDailyGame()">
+                        <i class="fa-solid fa-play"></i> Play
+                    </button>
+                </div>
+            </div>
             <div class="home-container">
                 <div class="hero-text">
                     <h1 class="hero-title">Seaside Games</h1>
-                    <p class="hero-sub">Click ' to autoswitch to OLSD portal. (Click settings to disguise tab as Google Drive)  </p>
+                    <p class="hero-sub">Pick a game and play in your browser.</p>
                     <div class="hero-buttons">
                         <button class="play-now-btn" onclick="resetAndShowAll()">Browse Library</button>
                     </div>
@@ -110,44 +114,11 @@
     </div>
 </div>
 
-<div id="settings-modal" class="modal-overlay">
-    <div class="modal-box">
-        <div class="modal-header">
-            <h3>Settings</h3>
-            <button class="modal-close-btn" onclick="toggleSettings()" aria-label="Close settings"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <div class="modal-body">
-            <div class="setting-row">
-                <div class="setting-desc">
-                    <h4>Panic Mode</h4>
-                    <p>Press ` to redirect to Google. Press ' to redirect to ClassLink.</p>
-                </div>
-                <label class="switch">
-                    <input type="checkbox" id="panic-toggle" checked>
-                    <span class="slider"></span>
-                </label>
-            </div>
-            <div class="setting-row">
-                <div class="setting-desc">
-                    <h4>Tab Cloak</h4>
-                    <p>Disguise as Google Drive.</p>
-                </div>
-                 <button class="cta-btn" onclick="cloakTab()">Activate</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div id="game-frame-container">
-    <div class="frame-controls" onclick="panicRedirect(event)">
+    <div class="frame-controls">
         <span class="frame-title">Seaside</span>
-        <span class="panic-label">Panic Bar</span>
         <span class="close-game" onclick="closeGame(event)"><i class="fa-solid fa-xmark"></i> Close Game</span>
     </div>
-    <div id="panic-notice" class="panic-notice">
-        <span class="notice-close" onclick="closePanicNotice(event)">×</span>
-        <p>Clicking ' will fail to change tabs when you're in a game. To switch to OLSD portal, click anywhere on the panic bar.</p>
-    </div>  
     <iframe id="game-frame" src=""></iframe>
 </div>
 
@@ -200,18 +171,6 @@
         container.style.display = 'none';
     }
 
-    // --- Settings Modal ---
-    function toggleSettings() {
-        const modal = document.getElementById('settings-modal');
-        if (modal.style.display === 'flex') {
-            modal.style.display = 'none';
-            modal.classList.remove('open');
-        } else {
-            modal.style.display = 'flex';
-            modal.classList.add('open');
-        }
-    }
-
     // --- Clock ---
     function updateTime() {
         const now = new Date();
@@ -226,14 +185,6 @@
     function showFavorites(el) { switchView('view-favorites', el); }
     function filterGames(category) { alert("Filtering for " + category); }
     function searchGames() { console.log("Searching..."); }
-    function cloakTab() { 
-        document.title = "My Drive - Google Drive"; 
-        const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
-        link.type = 'image/x-icon';
-        link.rel = 'shortcut icon';
-        link.href = 'https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png';
-        document.getElementsByTagName('head')[0].appendChild(link);
-    }
 </script>
     <script  src="./script.js"></script>
 
