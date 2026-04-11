@@ -121,7 +121,13 @@ body {
 @keyframes slideInBlur { 0% { transform: translateY(20px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
 
 /* HOME */
-#view-home { overflow: hidden; padding: 0; display: flex; flex-direction: column; }
+/* Flex layout only while home is active — a bare #view-home { display:flex } overrides .view-section { display:none } and traps the UI on home. */
+#view-home.view-section.active {
+    overflow: hidden;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
 
 .daily-game-strip {
     flex-shrink: 0;
