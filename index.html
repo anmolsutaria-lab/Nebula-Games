@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>Nebula Games</title>
+    <title>Seaside Games</title>
     <link rel="stylesheet" href="./style.css">
 
   </head>
@@ -17,7 +17,7 @@
   <div class="app-container">
     <div class="sidebar">
         <div class="brand">
-            Nebula
+            Seaside
         </div>
 
         <div class="nav-links">
@@ -66,7 +66,7 @@
         <div id="view-home" class="view-section active">
             <div class="home-container">
                 <div class="hero-text">
-                    <h1 class="hero-title">Nebula Games</h1>
+                    <h1 class="hero-title">Seaside Games</h1>
                     <p class="hero-sub">Click ' to autoswitch to OLSD portal. (Click settings to disguise tab as Google Drive)  </p>
                     <div class="hero-buttons">
                         <button class="play-now-btn" onclick="resetAndShowAll()">Browse Library</button>
@@ -114,7 +114,7 @@
     <div class="modal-box">
         <div class="modal-header">
             <h3>Settings</h3>
-            <button onclick="toggleSettings()" style="background:none; border:none; color:white; cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
+            <button class="modal-close-btn" onclick="toggleSettings()" aria-label="Close settings"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <div class="modal-body">
             <div class="setting-row">
@@ -140,7 +140,7 @@
 
 <div id="game-frame-container">
     <div class="frame-controls" onclick="panicRedirect(event)">
-        <span class="frame-title">Nebula</span>
+        <span class="frame-title">Seaside</span>
         <span class="panic-label">Panic Bar</span>
         <span class="close-game" onclick="closeGame(event)"><i class="fa-solid fa-xmark"></i> Close Game</span>
     </div>
