@@ -139,8 +139,8 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    width: min(var(--search-bar-width), 100%);
-    max-width: var(--search-bar-width);
+    width: 100%;
+    max-width: 400px;
     margin: 0;
     box-sizing: border-box;
     padding: 12px 20px;
@@ -312,15 +312,18 @@ body {
 #game-frame-container {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: #DBE2DC; z-index: 5000; display: none; flex-direction: column;
+    overflow: hidden;
 }
 .frame-controls {
     height: 50px; background: #B6D9E0; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; border-bottom: 1px solid #335765; user-select: none;
-    transition: margin-top 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
-    margin-top: 0;
-    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
+    transform: translateY(0);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 5;
 }
 .frame-controls.bar-hidden {
-    margin-top: -50px;
+    transform: translateY(-100%);
     opacity: 0;
     pointer-events: none;
 }
@@ -338,10 +341,10 @@ body {
 .close-game:hover { color: #000; }
 
 .show-bar-tab {
-    position: absolute;
-    top: 0;
+    position: fixed;
+    top: -40px;
     left: 50%;
-    transform: translateX(-50%) translateY(-100%);
+    transform: translateX(-50%);
     background: #B6D9E0;
     color: #000;
     font-family: 'Playpen Sans', sans-serif;
@@ -353,19 +356,15 @@ body {
     display: flex;
     align-items: center;
     gap: 5px;
-    z-index: 10;
+    z-index: 5001;
     user-select: none;
     border: 1px solid #335765;
     border-top: none;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
-    opacity: 0;
-    pointer-events: none;
+    transition: top 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .show-bar-tab.visible {
-    transform: translateX(-50%) translateY(0);
-    opacity: 1;
-    pointer-events: auto;
+    top: 0;
 }
 .show-bar-tab:hover { background: #a3ccd4; }
 

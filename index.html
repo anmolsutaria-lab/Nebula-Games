@@ -152,34 +152,7 @@
         document.getElementById('cat-dropdown').classList.toggle('show');
     }
 
-    // --- Movie/Game Player Logic ---
-    function openPlayer(id, title) {
-        const container = document.getElementById('game-frame-container');
-        const frame = document.getElementById('game-frame');
-        
-        // Check if it's a Dailymotion ID (usually starts with 'x' and is short)
-        // or a full URL. Here we assume Dailymotion IDs for the movies.
-        let url = "";
-        if (id.startsWith('http')) {
-            url = id;
-        } else {
-            // Embed URL for Dailymotion
-            url = `https://www.dailymotion.com/embed/video/${id}?autoplay=1&queue-enable=0&ui-logo=0`;
-        }
-
-        frame.src = url;
-        container.style.display = 'flex';
-        
-        // Optional: Update title in controls if you want to add an element for it
-        // document.querySelector('.frame-controls span:first-child').innerText = title;
-    }
-
-    function closeGame() {
-        const container = document.getElementById('game-frame-container');
-        const frame = document.getElementById('game-frame');
-        frame.src = ""; // Stop video
-        container.style.display = 'none';
-    }
+    // openPlayer and closeGame are defined in script.js
 
     // --- Clock ---
     function updateTime() {
