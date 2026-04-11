@@ -674,6 +674,12 @@ function playDailyGame() {
     if (dailyGamePick) launchGame(dailyGamePick.url);
 }
 
+function playRandomGame() {
+    if (!gamesData.length) return;
+    const randomIndex = Math.floor(Math.random() * gamesData.length);
+    launchGame(gamesData[randomIndex].url);
+}
+
 function scheduleDailyGameMidnightRefresh() {
     if (dailyGameRefreshTimer) clearTimeout(dailyGameRefreshTimer);
     const now = new Date();
@@ -805,10 +811,26 @@ function launchGame(url) {
     container.style.display = 'flex';
 }
 
+function toggleGameBar() {
+    const bar = document.getElementById('frame-controls');
+    const tab = document.getElementById('show-bar-tab');
+    const isHidden = bar.classList.toggle('bar-hidden');
+    if (isHidden) {
+        tab.classList.add('visible');
+    } else {
+        tab.classList.remove('visible');
+    }
+}
+
 function closeGame(event) {
     if (event) event.stopPropagation();
     const container = document.getElementById('game-frame-container');
     const iframe = document.getElementById('game-frame');
     iframe.src = '';
     container.style.display = 'none';
+    // Reset bar visibility for next game
+    const bar = document.getElementById('frame-controls');
+    const tab = document.getElementById('show-bar-tab');
+    if (bar) bar.classList.remove('bar-hidden');
+    if (tab) tab.classList.remove('visible');
 }

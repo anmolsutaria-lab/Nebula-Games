@@ -56,6 +56,12 @@
         </div>
 
         <div id="view-home" class="view-section active">
+            <div class="random-game-strip" aria-label="Random game picker">
+                <div class="random-game-strip-inner" onclick="playRandomGame()" role="button" tabindex="0">
+                    <i class="fa-solid fa-shuffle random-game-icon"></i>
+                    <span class="random-game-text">Click me for a random game!</span>
+                </div>
+            </div>
             <div class="daily-game-strip" aria-label="Daily featured game">
                 <div class="daily-game-strip-inner">
                     <span class="daily-game-label">Daily Game</span>
@@ -71,7 +77,7 @@
             <div class="home-container">
                 <div class="hero-text">
                     <h1 class="hero-title">Seaside Games</h1>
-                    <p class="hero-sub">Pick a game and play in your browser.</p>
+                    <p class="hero-sub">Feature and game requests will be taken into consideration.</p>
                     <div class="hero-buttons">
                         <button class="play-now-btn" onclick="resetAndShowAll()">Browse Library</button>
                     </div>
@@ -115,9 +121,13 @@
 </div>
 
 <div id="game-frame-container">
-    <div class="frame-controls">
+    <div class="frame-controls" id="frame-controls">
         <span class="frame-title">Seaside</span>
+        <span class="hide-bar-btn" onclick="toggleGameBar()"><i class="fa-solid fa-eye-slash"></i> Hide Bar</span>
         <span class="close-game" onclick="closeGame(event)"><i class="fa-solid fa-xmark"></i> Close Game</span>
+    </div>
+    <div class="show-bar-tab" id="show-bar-tab" onclick="toggleGameBar()">
+        <i class="fa-solid fa-eye"></i> Show Bar
     </div>
     <iframe id="game-frame" src=""></iframe>
 </div>
