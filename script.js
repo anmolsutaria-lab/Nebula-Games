@@ -25,6 +25,7 @@ const gamesData = [
     { title: "FNAF", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvNDIwNTI4LzcyMjQ4NzcucG5n/original/L47%2BVV.webp", url: "https://script.google.com/macros/s/AKfycbxJNtrKTWPCSIo9tOqq53G2xqoQCIPDTYUsVOT79Eqk8I7C5cQkGdDnj0jzlNHa7bvs3g/exec" },
     { title: "TABS", cat: "Clicker", img: "https://img.itch.zone/aW1hZ2UvMTQwNzg3Ni81MDc2MjYzLnBuZw==/original/1EQlYJ.webp", url: "https://script.google.com/macros/s/AKfycbx-20sK1Vv2W5l1l4NnyzA67dCLHiWUNOnwlGioOx9yKXkauoZt5H7l6il14wlLS9hI4A/exec" },
     { title: "Basketball Stars", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvMjA2MDQzNy84MDk2OTAyLnBuZw==/original/d%2BKSbX.webp", url: "https://script.google.com/macros/s/AKfycbwzYMDDcdDUAvEP7iO6OdRk-5_oUp6vYvDdyEEz8tTOzWi5y4-Qf3vQ6TBoZuc9UYVcLg/exec" },
+    { title: "Basket Random", cat: "Arcade", img: "https://via.placeholder.com/400x225.png?text=Basket+Random", url: "https://hfmanor.com/basket-random" },
     { title: "Retro Bowl", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvODEzOTMxLzM3OTE4MDUucG5n/original/3CnKLa.webp", url: "https://bav1.wadmc.site.cdn.cloudflare.net/pages/other/interpreter/index.html?url=https://cdn.jsdelivr.net/gh/gn-math/html@main/33.html" },
     { title: "Geometry Dash", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvMTk4ODg4MS85ODI4NjY1LnBuZw==/original/0fP7yz.webp", url: "https://mysticgames.netlify.app/games/geometrydash/" },
     { title: "CS Strike", cat: "Arcade", img: "https://img.itch.zone/aW1hZ2UvODk5MDM2LzQzMDcyODEucG5n/original/PH1dFA.webp", url: "https://storage.googleapis.com/freezenova/all/2024/unity2/fps-strike/pre-gg.html" },
@@ -172,7 +173,6 @@ const gamesData = [
 ];
 
 /* --- STATE MANAGEMENT --- */
-let favorites = JSON.parse(localStorage.getItem('rg_favs')) || [];
 
 function hideSiteLoader() {
     const loader = document.getElementById('site-loader');
@@ -205,19 +205,14 @@ function renderAllGames(list, containerId) {
     const grid = document.getElementById(containerId);
     if(!grid) return;
     
-    grid.innerHTML = list.map(game => {
-        const isFav = favorites.includes(game.title);
-        const starClass = isFav ? "fa-solid fa-star active" : "fa-regular fa-star";
-        
-        return `
+    grid.innerHTML = list.map(game => `
         <div class="game-card" onclick="launchGame('${game.url}')">
             <div class="game-info">
-                <i class="${starClass} fav-btn" onclick="event.stopPropagation(); toggleFavorite('${game.title}', this)"></i>
                 <div class="game-title">${game.title}</div>
                 <div class="game-cat">${game.cat}</div>
             </div>
         </div>
-    `}).join('');
+    `).join('');
 }
 
 /* --- HOME ANIMATION --- */
@@ -277,40 +272,6 @@ function filterGames(category, btnElement) {
 
 function toggleDropdown() {
     document.getElementById('cat-dropdown').classList.toggle('show');
-}
-
-/* --- FAVORITES SYSTEM --- */
-function toggleFavorite(title, btn) {
-    if(favorites.includes(title)) {
-        favorites = favorites.filter(t => t !== title);
-        btn.className = "fa-regular fa-star fav-btn";
-    } else {
-        favorites.push(title);
-        btn.className = "fa-solid fa-star fav-btn active";
-    }
-    localStorage.setItem('rg_favs', JSON.stringify(favorites));
-    
-    // Refresh favorites view if currently open
-    if(document.getElementById('view-favorites').classList.contains('active')) {
-        showFavorites(); 
-    }
-}
-
-function showFavorites(btn) {
-    if(btn) switchView('view-favorites', btn);
-    else switchView('view-favorites');
-
-    const favGames = gamesData.filter(g => favorites.includes(g.title));
-    const container = document.getElementById('fav-container');
-    const msg = document.getElementById('no-favs-msg');
-
-    if(favGames.length === 0) {
-        container.innerHTML = '';
-        msg.style.display = 'block';
-    } else {
-        msg.style.display = 'none';
-        renderAllGames(favGames, 'fav-container');
-    }
 }
 
 /* --- SEARCH --- */
